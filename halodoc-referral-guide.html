@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panduan Fitur Earn & Referral — Halodoc Doctors</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --teal: #1a8c73;
+    --teal-light: #f0faf6;
+    --teal-border: #9FE1CB;
+    --teal-dark: #0f6e56;
+    --teal-deeper: #085041;
+    --danger: #e24b4a;
+    --danger-light: #fef3f2;
+    --amber: #BA7517;
+    --amber-light: #fff8e1;
+    --amber-border: #FAC775;
+    --text: #1a1a1a;
+    --text-2: #555;
+    --text-3: #888;
+    --border: rgba(0,0,0,0.09);
+    --bg: #f7f8f6;
+    --white: #ffffff;
+    --radius: 12px;
+    --radius-sm: 7px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: var(--teal);
+    padding: 64px 24px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 50% 120%, rgba(255,255,255,0.07) 0%, transparent 70%);
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.9);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.2);
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-size: clamp(22px, 4vw, 36px);
+    font-weight: 600;
+    color: #fff;
+    max-width: 680px;
+    margin: 0 auto 14px;
+    line-height: 1.3;
+  }
+  .hero p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.75);
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  /* ─── NAV DOTS ─── */
+  .nav-strip {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 12px rgba(0,0,0,0.05);
+  }
+  .nav-strip::-webkit-scrollbar { display: none; }
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-3);
+    white-space: nowrap;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    text-decoration: none;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .nav-item:hover { color: var(--teal); }
+  .nav-item.active { color: var(--teal); border-bottom-color: var(--teal); }
+  .nav-num {
+    width: 20px; height: 20px;
+    background: var(--teal-light);
+    color: var(--teal);
+    border-radius: 50%;
+    font-size: 11px;
+    font-weight: 600;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  /* ─── SECTIONS ─── */
+  .section {
+    padding: 64px 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .section-header {
+    margin-bottom: 40px;
+  }
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 10px;
+  }
+  .section-label::before {
+    content: '';
+    width: 20px; height: 2px;
+    background: var(--teal);
+    border-radius: 2px;
+  }
+  .section-title {
+    font-size: clamp(20px, 3vw, 28px);
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+  .section-desc {
+    font-size: 15px;
+    color: var(--text-2);
+    max-width: 600px;
+  }
+  .divider {
+    height: 1px;
+    background: var(--border);
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* ─── STEP GRIDS ─── */
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; max-width: 740px; }
+  .grid-2-full { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+  @media (max-width: 900px) {
+    .grid-3 { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .grid-3, .grid-2, .grid-2-full { grid-template-columns: 1fr; }
+  }
+
+  /* ─── STEP CARD ─── */
+  .card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .card:hover {
+    box-shadow: 0 8px 32px rgba(26,140,115,0.12);
+    transform: translateY(-2px);
+  }
+  .card-header {
+    background: var(--teal);
+    padding: 11px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card-badge {
+    background: rgba(255,255,255,0.22);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 5px;
+    padding: 2px 8px;
+    white-space: nowrap;
+    font-family: 'DM Mono', monospace;
+  }
+  .card-header-title { color: #fff; font-size: 12px; font-weight: 500; }
+
+  /* ─── PHONE MOCKUP ─── */
+  .phone { background: #f3f4f6; margin: 14px 14px 0; border-radius: 10px; border: 1px solid var(--border); overflow: hidden; }
+  .topbar-teal { background: var(--teal); padding: 8px 11px; display: flex; align-items: center; gap: 6px; }
+  .topbar-white { background: #fff; border-bottom: 1px solid var(--border); padding: 8px 11px; display: flex; align-items: center; gap: 6px; }
+  .tb-back-w { color: #fff; font-size: 13px; }
+  .tb-back { color: var(--text); font-size: 13px; }
+  .tb-title-w { font-size: 11px; font-weight: 500; color: #fff; flex: 1; }
+  .tb-title { font-size: 11px; font-weight: 500; color: var(--text); flex: 1; }
+  .pb { padding: 10px; background: #f3f4f6; }
+  .pb-w { padding: 10px; background: #fff; }
+
+  /* phone internals */
+  .earn-banner { background: var(--teal); border-radius: 8px; padding: 10px 12px; margin-bottom: 8px; }
+  .earn-lbl { font-size: 9px; color: rgba(255,255,255,0.8); }
+  .earn-val { font-size: 19px; font-weight: 600; color: #fff; }
+  .stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; margin-bottom: 5px; }
+  .stat-box { background: #fff; border: 1px solid var(--border); border-radius: 6px; padding: 6px 8px; }
+  .s-lbl { font-size: 8px; color: var(--text-3); }
+  .s-num { font-size: 14px; font-weight: 600; color: var(--text); }
+  .sec-lbl { font-size: 10px; font-weight: 600; color: var(--text); margin: 8px 0 5px; }
+  .ref-card-p { background: #fff; border: 1px solid var(--border); border-radius: 7px; padding: 8px 9px; margin-bottom: 5px; }
+  .ref-card-p.hl { border: 1.5px solid var(--teal); }
+  .ref-row { display: flex; justify-content: space-between; align-items: flex-start; }
+  .ref-name-p { font-size: 10px; font-weight: 600; color: var(--text); line-height: 1.3; }
+  .badge-a { background: var(--teal-light); border: 1px solid var(--teal-border); border-radius: 4px; padding: 1px 6px; font-size: 8px; color: var(--teal-dark); font-weight: 600; white-space: nowrap; }
+  .badge-d { background: var(--danger-light); border: 1px solid #F09595; border-radius: 4px; padding: 1px 6px; font-size: 8px; color: #791F1F; font-weight: 600; white-space: nowrap; }
+  .ref-cat { font-size: 8px; color: var(--text-3); margin: 1px 0; }
+  .ref-meds-p { font-size: 8px; color: var(--text-3); margin-bottom: 5px; }
+  .rs-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3px; margin-bottom: 5px; }
+  .rs-lbl { font-size: 7px; color: var(--text-3); }
+  .rs-val { font-size: 11px; font-weight: 600; color: var(--text); }
+  .earn-chip { background: var(--teal-light); border-radius: 4px; padding: 3px 7px; font-size: 8px; color: var(--teal-dark); margin-bottom: 6px; }
+  .earn-chip-sm { background: var(--teal-light); border: 1px solid var(--teal-border); border-radius: 3px; display: inline-block; padding: 1px 5px; font-size: 8px; color: var(--teal-dark); margin-top: 2px; }
+  .cbtns { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+  .btn-ol { border: 1px solid var(--teal); color: var(--teal); background: #fff; border-radius: 5px; text-align: center; padding: 4px; font-size: 8px; font-weight: 500; }
+  .btn-ol.glow { border-width: 1.5px; box-shadow: 0 0 0 3px rgba(26,140,115,0.12); }
+  .btn-tl { background: var(--teal); color: #fff; border-radius: 5px; text-align: center; padding: 4px; font-size: 8px; font-weight: 500; }
+  .btn-tl.glow { box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--teal); }
+  .btn-tl-full { background: var(--teal); color: #fff; border-radius: 7px; text-align: center; padding: 8px; font-size: 10px; font-weight: 600; margin-top: 6px; }
+  .btn-tl-full.glow { box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--teal); }
+  .btn-dl { border: 1px solid var(--danger); color: var(--danger); background: #fff; border-radius: 5px; text-align: center; padding: 5px; font-size: 8px; font-weight: 500; }
+  .btn-dl.glow { border-width: 1.5px; box-shadow: 0 0 0 3px rgba(226,75,74,0.1); }
+  .btn-react { background: var(--teal); color: #fff; border-radius: 5px; text-align: center; padding: 5px; font-size: 8px; font-weight: 500; }
+  .btn-react.glow { box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--teal); }
+  .btn-no { border: 1px solid var(--border); color: var(--text-3); background: #fff; border-radius: 5px; text-align: center; padding: 5px; font-size: 8px; font-weight: 500; }
+  .warn-box { background: var(--amber-light); border: 1px solid var(--amber-border); border-radius: 6px; padding: 5px 7px; margin-bottom: 7px; display: flex; gap: 5px; }
+  .wi { color: var(--amber); font-size: 10px; flex-shrink: 0; }
+  .wt { font-size: 8px; color: #5a3a00; line-height: 1.4; }
+  .med-row-p { padding: 5px 0; border-bottom: 1px solid var(--border); }
+  .med-row-p:last-child { border-bottom: none; }
+  .med-name-p { font-size: 9px; font-weight: 600; color: var(--text); }
+  .med-meta-p { font-size: 8px; color: var(--text-3); line-height: 1.3; }
+  .add-med { display: flex; align-items: center; justify-content: center; gap: 3px; border: 1px solid var(--border); border-radius: 5px; padding: 5px; font-size: 8px; color: var(--teal); font-weight: 500; margin: 6px 0; }
+  .earn-footer { background: var(--teal-light); border-radius: 4px; padding: 4px 7px; font-size: 8px; color: var(--teal-dark); margin-top: 4px; }
+  .empty-state { background: #fff; border-radius: 8px; padding: 10px; margin-top: 4px; }
+  .empty-title { font-size: 10px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+  .empty-desc { font-size: 8px; color: var(--text-3); line-height: 1.5; }
+  .link-row-p { background: #f3f4f6; border-radius: 5px; padding: 5px 7px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
+  .link-text-p { font-size: 8px; color: var(--text-3); font-family: 'DM Mono', monospace; }
+  .det-card { border: 1px solid var(--teal); border-radius: 7px; padding: 7px 8px; margin-bottom: 6px; }
+  .det-card.del { border-color: var(--danger); }
+  .tab-row { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--border); }
+  .tab { text-align: center; padding: 7px 0; font-size: 9px; color: var(--text-3); }
+  .tab.on { color: var(--teal); font-weight: 600; border-bottom: 2px solid var(--teal); }
+  .search-bar-p { display: flex; align-items: center; gap: 4px; background: #f3f4f6; border-radius: 5px; padding: 4px 7px; margin: 6px 0; }
+  .sb-txt { font-size: 8px; color: var(--text-3); flex: 1; }
+  .form-lbl { font-size: 9px; font-weight: 500; color: var(--text); margin-bottom: 3px; display: block; }
+  .req { color: var(--danger); }
+  .form-inp { width: 100%; box-sizing: border-box; border: 1.5px solid var(--teal); border-radius: 6px; padding: 6px 8px; font-size: 9px; color: var(--text); background: #fff; margin-bottom: 10px; }
+  .form-inp-empty { width: 100%; box-sizing: border-box; border: 1px solid var(--border); border-radius: 6px; padding: 6px 8px; font-size: 9px; color: var(--text-3); background: #fff; margin-bottom: 10px; }
+  .form-sel { width: 100%; box-sizing: border-box; border: 1px solid var(--border); border-radius: 6px; padding: 6px 8px; font-size: 9px; color: var(--text); background: #fff; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
+  .feat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+  .feat-tile { background: #fff; border: 1px solid var(--border); border-radius: 7px; padding: 8px 8px 9px; }
+  .feat-tile.hl { border: 1.5px solid var(--teal); background: var(--teal-light); }
+  .feat-icon { font-size: 15px; margin-bottom: 3px; }
+  .feat-label { font-size: 9px; color: var(--text); font-weight: 500; line-height: 1.3; }
+  .feat-tile.hl .feat-label { color: var(--teal-dark); }
+  .qty-row { display: flex; align-items: center; gap: 5px; margin-bottom: 6px; }
+  .qty-btn { width: 17px; height: 17px; border: 1px solid var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; color: var(--teal); flex-shrink: 0; line-height: 1; }
+  .qty-v { font-size: 11px; font-weight: 600; color: var(--text); min-width: 12px; text-align: center; }
+  .qty-u { font-size: 9px; color: var(--text-3); }
+  .cb-row { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 5px; }
+  .cb-item { display: flex; align-items: center; gap: 3px; font-size: 8px; color: var(--text-3); }
+  .cb { width: 10px; height: 10px; border: 1px solid var(--border); border-radius: 2px; flex-shrink: 0; }
+  .cb.on { background: var(--teal); border-color: var(--teal); }
+  .notes-box { background: #f8f8f8; border: 1px solid var(--border); border-radius: 5px; padding: 5px 6px; font-size: 8px; color: var(--text-3); line-height: 1.4; margin-bottom: 7px; }
+  .med-img-p { width: 28px; height: 28px; background: #e8f5e9; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; }
+  .add-btn-p { background: var(--teal); color: #fff; font-size: 8px; font-weight: 600; border-radius: 5px; padding: 4px 8px; white-space: nowrap; }
+  .pkg-title-p { font-size: 10px; font-weight: 600; color: var(--text); }
+  .pkg-date { font-size: 8px; color: var(--text-3); margin-bottom: 5px; }
+  .med-icons { display: flex; gap: 4px; font-size: 10px; color: var(--text-3); }
+  .contacts-row { display: flex; gap: 8px; overflow: hidden; margin-bottom: 8px; }
+  .contact { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .contact-av { width: 28px; height: 28px; border-radius: 50%; background: #c8f0e4; border: 1.5px solid var(--teal); display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 600; color: var(--teal-dark); position: relative; }
+  .wa-b { position: absolute; bottom: -2px; right: -2px; width: 9px; height: 9px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 6px; color: #fff; font-weight: 700; }
+  .contact-name { font-size: 7px; color: var(--text-3); text-align: center; max-width: 32px; line-height: 1.2; }
+  .app-icons-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; margin-bottom: 6px; }
+  .app-icon { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+  .app-icon-circle { width: 28px; height: 28px; border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+  .app-icon-label { font-size: 7px; color: var(--text-3); }
+  .share-row-item { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; border-top: 1px solid var(--border); font-size: 9px; color: var(--text); }
+  .no-share-note { background: var(--danger-light); border: 1px solid #F09595; border-radius: 5px; padding: 5px 8px; font-size: 8px; color: #791F1F; line-height: 1.4; margin: 6px 10px 10px; }
+  .success-icon { width: 34px; height: 34px; background: #22c55e; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 7px; font-size: 16px; color: #fff; font-weight: 700; }
+  .popup-overlay { background: #fff; border-radius: 10px 10px 0 0; border-top: 1px solid var(--border); padding: 12px 11px 10px; }
+  .popup-title { font-size: 11px; font-weight: 600; color: var(--text); text-align: center; margin-bottom: 3px; }
+  .popup-desc { font-size: 8px; color: var(--text-3); text-align: center; line-height: 1.4; margin-bottom: 7px; }
+  .popup-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+  .screen-dimmed .screen-bg { opacity: 0.3; }
+  .drop-m { border: 1px solid var(--border); border-radius: 4px; padding: 3px 6px; font-size: 8px; color: var(--text); display: inline-flex; align-items: center; gap: 3px; }
+
+  /* ─── ANNOTATION ─── */
+  .annotation { padding: 13px 16px 15px; }
+  .anno { font-size: 13px; color: var(--text-2); line-height: 1.6; }
+  .anno strong { color: var(--text); font-weight: 600; }
+  .bullet-list { margin: 6px 0 0; padding: 0; list-style: none; }
+  .bullet-list li { font-size: 13px; color: var(--text-2); padding: 2px 0 2px 16px; position: relative; line-height: 1.6; }
+  .bullet-list li::before { content: "•"; position: absolute; left: 0; color: var(--teal); }
+  .bullet-list li strong { color: var(--text); font-weight: 600; }
+  .bullet-list li.no::before { content: "✕"; color: var(--danger); font-size: 9px; top: 4px; }
+  .callout { background: var(--teal-light); border: 1px solid var(--teal-border); border-radius: 7px; padding: 7px 10px; margin-top: 8px; font-size: 12px; color: var(--teal-dark); line-height: 1.5; }
+  .callout strong { color: var(--teal-deeper); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--teal);
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 32px 24px;
+    font-size: 13px;
+    margin-top: 40px;
+  }
+  footer strong { color: #fff; }
+
+  /* ─── SECTION SEPARATOR ─── */
+  .section-sep {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .section-sep::before, .section-sep::after {
+    content: ''; flex: 1; height: 1px; background: var(--border);
+  }
+  .section-sep span {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    white-space: nowrap;
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">Halodoc Doctors · Panduan Fitur</div>
+  <h1>Panduan Lengkap Earn (Affiliate & Referral)</h1>
+  <p>Pelajari cara membuat, mengelola, dan membagikan paket referral obat untuk pasien Anda</p>
+</div>
+
+<!-- NAV -->
+<nav class="nav-strip">
+  <a class="nav-item active" href="#section1"><span class="nav-num">1</span>Membuat Referral</a>
+  <a class="nav-item" href="#section2"><span class="nav-num">2</span>Halaman Home Earn</a>
+  <a class="nav-item" href="#section3"><span class="nav-num">3</span>Nonaktif & Reaktivasi</a>
+</nav>
+
+<!-- ════════════════════════════════════════════════
+     SECTION 1 — MEMBUAT REFERRAL (12 langkah)
+════════════════════════════════════════════════ -->
+<div id="section1">
+
+  <!-- 1A: Langkah 1–3 -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-label">Bagian 1</div>
+      <h2 class="section-title">Bagaimana cara dokter masuk ke halaman referral & membuat referral?</h2>
+      <p class="section-desc">Ikuti langkah berikut untuk mengakses fitur Earn dan mulai membuat paket referral obat.</p>
+    </div>
+    <div class="grid-3">
+
+      <!-- L1 -->
+      <div class="card">
+        <div class="card-header"><span class="card-badge">Langkah 1</span><span class="card-header-title">Masuk ke fitur Earn</span></div>
+        <div class="phone">
+          <div class="topbar-teal"><span class="tb-back-w">←</span><span class="tb-title-w" style="text-align:center;">Halodoc Doctors</span><span style="font-size:12px;color:rgba(255,255,255,0.7);">⚙</span></div>
+          <div class="pb">
+            <p style="font-size:9px;color:var(--text-3);margin:0 0 7px;font-weight:600;">Features</p>
+            <div class="feat-grid">
+              <div class="feat-tile"><div class="feat-icon">💬</div><div class="feat-label">Online Consultation</div></div>
+              <div class="feat-tile"><div class="feat-icon">📋</div><div class="feat-label">Offline Consultation</div></div>
+              <div class="feat-tile"><div class="feat-icon">🏪</div><div class="feat-label">Digital Clinic</div></div>
+              <div class="feat-tile"><div class="feat-icon">📅</div><div class="feat-label">Learn (Event & Webinar)</div></div>
+              <div class="feat-tile hl"><div class="feat-icon">📄</div><div class="feat-label">Earn (Affiliate & Referral)</div></div>
+              <div class="feat-tile"><div class="feat-icon">✉️</div><div class="feat-label">Inbox</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="annotation"><p class="anno">Klik <strong>"Earn (Affiliate & Referral)"</strong> dari halaman utama fitur.</p></div>
+      </div>
+
+      <!-- L2 -->
+      <div class="card">
+        <div class="card-header"><span class="card-badge">Langkah 2</span><span class="card-header-title">Halaman Earn</span></div>
+        <div class="phone">
+          <div class="topbar-teal"><span class="tb-back-w">←</span><span class="tb-title-w">Earn (Affiliate & Referral)</span></div>
+          <div class="pb">
+            <div class="earn-banner"><div class="earn-lbl">Total earnings this month</div><div class="earn-val">0</div></div>
+            <div class="stat-row">
+              <div class="stat-box"><div class="s-lbl">Total Clicks</div><div class="s-num">0</div></div>
+              <div class="stat-box"><div class="s-lbl">Total Orders</div><div class="s-num">0</div></div>
+            </div>
+            <div class="stat-row">
+              <div class="stat-box"><div class="s-lbl">Conversion</div><div class="s-num">0</div></div>
+              <div class="stat-box"><div class="s-lbl">Total Earned</div><div class="s-num">0</div></div>
+            </div>
+            <div class="empty-state">
+              <div class="empty-title">No referral yet</div>
+              <div class="empty-desc">Start creating and sharing referral for medicines or homecare services.</div>
+            </div>
+            <div class="btn-tl-full">+ Create Referral</div>
+          </div>
+        </div>
+        <div class="annotation"><p class="anno">Anda masuk ke halaman Earn. Klik tombol <strong>"+ Create Referral"</strong> di bagian bawah layar.</p></div>
+      </div>
+
+      <!-- L3 -->
+      <div class="card">
+        <div class="card-header"><span class="card-badge">Langkah 3</span><span class="card-header-title">Isi form referral</span></div>
+        <div class="phone">
+          <div class="topbar-white"><span class="tb-back">←</span><span class="tb-title">Create Referral</span></div>
+          <div class="pb-w">
+            <label class="form-lbl">Referral Name <span class="req">*</span></label>
+            <div class="form-inp-empty">Referral name</div>
+            <label class="form-lbl">Category <span class="req">*</span></label>
+            <div class="form-sel"><span>Medicine</span><span style="font-size:8px;color:var(--text-3);">▼</span></div>
+            <div style="background:var(--teal-light);border:1px solid var(--teal-border);border-radius:6px;padding:7px 9px;margin-top:4px;">
+              <p style="font-size:8px;color:var(--teal-dark);margin:0;line-height:1.5;">Contoh: Referral dapat berisi rekomendasi rangkaian obat untuk pasien, seperti <strong>cetirizine</strong> dan <strong>acetylcysteine</strong> untuk flu dan batuk.</p>
+            </div>
+            <div class="btn-tl-full" style="background:#ccc;box-shadow:none;margin-top:60px;">Next</div>
+          </div>
+        </div>
+        <div class="annotation">
+          <p class="anno">Anda masuk ke halaman Create Referral. Isi kolom yang tersedia:</p>
+          <ul class="bullet-list">
+            <li><strong>Referral Name</strong> – nama paket referral (contoh: "Paket Flu & Batuk")</li>
+            <li><strong>Category</strong> – pilih kategori yang sesuai</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1B: Langkah 4–6 -->
+  <div class="section-sep"><span>Melanjutkan pembuatan referral</span></div>
+  <section class="section" style="padding-top:40px;">
+    <div class="grid-3">
+
+      <!-- L4 -->
+      <div class="card">
+        <div class="card-header"><span class="card-badge">Langkah 4</span><span class="card-header-title">Aktifkan tombol Next</span></div>
+        <div class="phone">
+          <div class="topbar-white"><span class="tb-back">←</span><span class="tb-title">Create Referral</span></div>
+          <div class="pb-w">
+            <label class="form-lbl">Referral Name <span class="req">*</span></label>
+            <div class="form-inp">Routine Hypertension Package</div>
+            <label class="form-lbl">Category <span class="req">*</span></label>
+            <div class="form-sel"><span>Medicine</span><span style="font-size:8px;color:var(--text-3);">▼</span></div>
+            <div style="height:50px;"></div>
+            <div class="btn-tl-full glow">Next</div>
+          </div>
+        </div>
+        <div class="annotation"><p class="anno">Isi kolom <strong>"Referral Name"</strong>, maka tombol <strong>"Next"</strong> akan aktif (berwarna hijau) dan dapat diklik.</p></div>
+      </div>
+
+      <!-- L5 -->
+      <div class="card">
+        <div class="card-header"><span class="card-badge">Langkah 5</span><span class="card-header-title">Pilih obat referral</span></div>
+        <div class="phone">
+          <div class="topbar-white"><span class="tb-back">←</span><span class="tb-title">Add Medicines</span></div>
+          <div class="pb-w">
+            <div class="search-bar-p"><span class="sb-txt">Search medicine...</span><span style="font-size:10px;color:var(--text-3);">🔍</span></div>
+            <div style="display:flex;flex-direction:column;">
+              <div style="display:flex;align-items:flex-start;gap:7px;padding:6px 0;border-bottom:1px solid var(--border);">
+                <div class="med-img-p">💊</div>
+                <div style="flex:1;">
+                  <div class="med-name-p" style="color:var(--teal);">Pamol 500 mg 10 Tablet</div>
+                  <div class="med-meta-p">Strip</div>
+                  <div style="font-size:8px;color:var(--teal);">💰 Est. earnings : 1,800 / unit sold</div>
+                </div>
+                <span style="font-size:11px;color:var(--text-3);">ⓘ</span>
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:7px;padding:6px 0;border-bottom:1px solid var(--border);">
+                <div class="med-img-p">💊</div>
+                <div style="flex:1;">
+                  <div class="med-name-p">Pamol Suppositoria 125 mg</div>
+                  <div class="med-meta-p">Strip</div>
+                  <div style="font-size:8px;color:var(--teal);">💰 Est. earnings : 1,800 / unit sold</div>
+                </div>
+                <span style="font-size:11px;color:var(--text-3);">ⓘ</span>
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:7px;padding:6px 0;border-bottom:1px solid var(--border);">
+                <div class="med-img-p">💊</div>
+                <div style="flex:1;"><div class="med-name-p">Longatin 50 mg 10 Kapsul</div><div class="med-meta-p">Strip</div></div>
+                <span style="font-size:11px;color:var(--text-3);">ⓘ</span>
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:7px;padding:6px 0;">
+                <div class="med-img-p">💊</div>
+                <div style="flex:1;"><div class="med-name-p">Paratusin 10 Tablet</div><div class="med-meta-p">Strip</div></div>
+                <span style="font-size:11px;color:var(--text-3);">ⓘ</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="annotation"><p class="anno">Anda masuk ke halaman daftar obat. <strong>Pilih obat</strong> yang akan dimasukkan ke dalam paket referral.</p></div>
+      </div>
+
+      <!-- L6 -->
+      <div class="card">
+        <div class="card-header"><span class="card-badge">Langkah 6</span><span class="card-header-title">Tambah obat ke referral</span></div>
+        <div class="phone">
+          <div class="topbar-white"><span class="tb-back">←</span><span class="tb-title">Product Details</span></div>
+          <div class="pb-w">
+            <div style="display:flex;align-items:center;gap:7px;padding:7px;background:#fff;border:1px solid var(--border);border-radius:7px;margin-bottom:7px;">
+              <div class="med-img-p">💊</div>
+              <div style="flex:1;"><div class="med-name-p">Pamol 500 mg 10 Tablet</div><div class="med-meta-p">Strip</div></div>
+              <div class="add-btn-p glow">+ Add</div>
+            </div>
+            <div style="background:var(--teal-light);border:1px solid var(--teal-border);border-radius:5px;padding:4px 8px;font-size:8px;color:var(--teal-dark);margin-bottom:7px;">💰 Estimated earnings : 1,800 / unit sold</div>
+            <div style="font-size:9px;font-weight:600;color:var(--text);margin:6px 0 3px;">Ingredients</div>
+            <div style="font-size:8px;color:var(--text-3);line-height:1.4;margin-bottom:5px;">Doxycycline, Clindamycin 1%, Tazarotene 0.05%, Tretinonin 0.022%</div>
+            <div style="font-size:9px;font-weight:600;color:var(--text);margin:6px 0 3px;">Side Effects</div>
+            <div style="font-size:8px;color:var(--text-3);line-height:1.4;margin-bottom:5px;">Although very rare, using the cream in a way that is not as directed may increase the risk of skin allergic reactions.</div>
+            <div style="font-size:9px;font-weight:600;color:var(--text);margin:6px 0 3px;">Caution</div>
+            <div style="font-size:8px;color:var(--text-3);line-height:1.4;">Stop using the product if an allergic reaction occurs on the facial skin.</div>
+          </div>
+        </div>
+        <div class="annotation"><p class="anno">Anda diarahkan ke halaman <strong>Product Detail</strong>. Klik tombol <strong>"+ Add"</strong> untuk menambahkan obat ke dalam referral.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1C: Langkah 7–9 -->
+  <div class="section-sep"><span>Mengisi detail dosis & menyimpan</span></div>
+  <section class="section" style="padding-top:40px;">
+    <div class="grid-3">
+
+      <!-- L7 -->
+      <div class="card">
+        <div class="card-header"><span class="card-badge">Langkah 7</span><span class="card-header-title">Isi detail & dosis obat</span></div>
+        <div class="phone">
+          <div class="topbar-white"><span class="tb-back">←</span><span class="tb-title">Edit Dosage Instructions</span></div>
+          <div class="pb-w">
+            <p style="font-size:10px;font-weight:600;color:var(--text);margin:0 0 4px;">Pamol 500 mg 10 Tablet</p>
+            <div style="background:var(--teal-light);border:1px solid var(--teal-border);border-radius:4px;padding:3px 7px;font-size:8px;color:var(--teal-dark);margin-bottom:7px;">💰 Estimated earnings : 1,800 / unit sold</div>
+            <div style="font-size:8px;font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:.4px;margin-bottom:4px;">Quantity</div>
+            <div class="qty-row"><div class="qty-btn">−</div><span class="qty-v">2</span><div class="qty-btn">+</div><span class="qty-u">Strip</span></div>
+            <div style="font-size:8px;font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:.4px;margin-bottom:4px;">Dosage Information</div>
+            <div class="qty-row"><div class="qty-btn">−</div><span class="qty-v">3</span><div class="qty-btn">+</div><span class="qty-u">times per day</span></div>
+            <div class="qty-row" style="margin-bottom:6px;"><div class="qty-btn">−</div><span class="qty-v">1</span><div class="qty-btn">+</div><div class="drop-m">tablet ▾</div></div>
+            <div style="font-size:8px;font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:.4px;margin-bottom:4px;">When to Use</div>
+            <div class="cb-row">
+              <div class="cb-item"><div class="cb"></div> Before Meals</div>
+              <div class="cb-item"><div class="cb"></div> When Eating</div>
+              <div class="cb-item"><div class="cb on"></div> <span style="color:var(--teal);">After Meals</span></div>
+            </div>
+            <div class="cb-row">
+              <div class="cb-item"><div class="cb on"></div> <span style="color:var(--teal);">Morning</span></div>
+              <div class="cb-item"><div class="cb on"></div> <span style="color:var(--teal);">Afternoon</span></div>
+              <div class="cb-item"><div class="cb on"></div> <span style="color:var(--teal);">Evening</span></div>
+            </div>
+            <div class="notes-box">Untuk kondisi pasien ini, saya menyarankan konsumsi obat ini 6 kali / hari setelah makan dengan interval waktu 3 jam...</div>
+            <div class="btn-tl-full">Save</div>
+          </div>
+        </div>
+        <div class="annotation">
+          <p class="anno">Isi detail obat:</p>
+          <ul class="bullet-list">
+            <li><strong>Quantity</strong> – jumlah strip/tablet</li>
+            <li><strong>Dosage</strong> – frekuensi & jumlah per dosis</li>
+            <li><strong>When to Use</strong> – waktu konsumsi</li>
+            <li><strong>Notes</strong> – catatan tambahan</li>
+          </ul>
+          <p class="anno" style="margin-top:6px;">Setelah selesai, klik <strong>"Save"</strong>.</p>
+        </div>
+      </div>
+
+      <!-- L8 -->
+      <div class="card">
+        <div class="card-header"><span class="card-badge">Langkah 8</span><span class="card-header-title">Kelola paket referral</span></div>
+        <div class="phone">
+          <div class="topbar-white"><span class="tb-back">←</span><div style="flex:1;"><div class="tb-title">Routine Hypertension Package</div><div style="font-size:8px;color:var(--text-3);">1 item</div></div></div>
+          <div class="pb-w">
+            <div class="warn-box"><span class="wi">⚠</span><span class="wt">Please verify each medicine and dosage to ensure accuracy before generating your referral link.</span></div>
+            <div class="med-row-p">
+              <div style="display:flex;justify-content:space-between;">
+                <div>
+                  <div class="med-name-p">Pamol 500 mg 10 Tablet <span style="font-size:8px;font-weight:400;color:var(--text-3);">ⓘ • 2 Strip</span></div>
+                  <div class="med-meta-p">3 times / day x 1 tablet · After meals</div>
+                  <div class="earn-chip-sm">💰 Est. earnings : 3,600</div>
+                </div>
+                <div class="med-icons">✏️ 🗑</div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:center;gap:3px;border:1px solid var(--border);border-radius:5px;padding:6px;font-size:9px;color:var(--teal);font-weight:500;margin:6px 0;">＋ Add Medicine</div>
+            <div style="height:30px;"></div>
+            <div style="background:var(--teal-light);border-radius:4px;padding:5px 7px;font-size:8px;color:var(--teal-dark);">💰 Estimated earnings per order: <strong>3,600</strong></div>
+            <div class="btn-tl-full">Save</div>
+          </div>
+        </div>
+        <div class="annotation"><p class="anno">Obat masuk ke paket referral. Tambah obat lain dengan <strong>"+ Add Medicine"</strong>, atau klik <strong>"Save"</strong> jika hanya satu obat.</p></div>
+      </div>
+
+      <!-- L9 -->
+      <div class="card">
+        <div class="card-header"><span class="card-badge">Langkah 9</span><span class="card-header-title">Tambah obat & simpan</span></div>
+        <div class="phone">
+          <div class="topbar-white"><span class="tb-back">←</span><div style="flex:1;"><div class="tb-title">Routine Hypertension Package</div><div style="font-size:8px;color:var(--text-3);">2 items</div></div></div>
+          <div class="pb-w">
+            <div class="warn-box"><span class="wi">⚠</span><span class="wt">Please verify each medicine and dosage to ensure accuracy before generating your referral link.</span></div>
+            <div class="med-row-p">
+              <div style="display:flex;justify-content:space-between;">
+                <div>
+                  <div class="med-name-p">Pamol 500 mg 10 Tablet <span style="font-size:8px;font-weight:400;color:var(--text-3);">ⓘ • 2 Strip</span></div>
+                  <div class="med-meta-p">3 times / day · After meals</div>
+                  <div class="earn-chip-sm">💰 Est. earnings : 3,600</div>
+                </div>
+                <div class="med-icons">✏️ 🗑</div>
+              </div>
+            </div>
+            <div class="med-row-p" style="border-bottom:none;">
+              <div style="display:flex;justify-content:space-between;">
+                <div>
+                  <div class="med-name-p">Longatin 50 mg 10 Kapsul <span style="font-size:8px;font-weight:400;color:var(--text-3);">ⓘ • 1 Strip</span></div>
+                  <div class="med-meta-p">3 times / day · Before meals</div>
+                </div>
+                <div class="med-icons">✏️ 🗑</div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:center;gap:3px;border:1px solid var(--border);border-radius:5px;padding:6px;font-size:9px;color:var(--teal);font-weight:500;margin:6px 0;">＋ Add Medicine</div>
+            <div style="background:var(--teal-light);border-radius:4px;padding:5px 7px;font-size:8px;color:var(--teal-dark);">💰 Estimated earnings per order: <strong>3,600</strong></div>
+            <div class="btn-tl-full">Save</div>
+          </div>
+        </div>
+        <div class="annotation"><p class="anno">Ulangi alur yang sama untuk obat tambahan. Setelah semua obat lengkap, klik <strong>"Save"</strong>.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1D: Langkah 10–12 -->
+  <div class="section-sep"><span>Referral berhasil dibuat & siap dibagikan</span></div>
+  <section class="section" style="padding-top:40px;">
+    <div class="grid-3">
+
+      <!-- L10 -->
+      <div class="card">
+        <div class="card-header"><span class="card-badge">Langkah 10</span><span class="card-header-title">Referral berhasil dibuat</span></div>
+        <div class="phone">
+          <div class="topbar-white"><span class="tb-back">←</span><span class="tb-title">Routine Hypertension Package</span></div>
+          <div class="screen-dimmed">
+            <div class="screen-bg pb-w" style="padding-bottom:6px;">
+              <div class="warn-box"><span class="wi">⚠</span><span class="wt">Please verify each medicine and dosage before generating your referral link.</span></div>
+              <div class="med-row-p"><div class="med-name-p">Pamol 500 mg 10 Tablet</div><div class="med-meta-p">After meals / Morning, Afternoon, Evening</div></div>
+              <div class="med-row-p" style="border-bottom:none;"><div class="med-name-p">Longatin 50 mg 10 Kapsul</div><div class="med-meta-p">Before meals / Morning, Afternoon, Evening</div></div>
+            </div>
+            <div class="popup-overlay">
+              <div class="success-icon">✓</div>
+              <div class="popup-title">Referral Created Successfully!</div>
+              <div class="popup-desc">Your referral link is ready. Share it with your patient to help them view and purchase the recommended medicines.</div>
+              <div class="link-row-p"><span class="link-text-p">halo.doc/b/RXP924</span><span style="font-size:11px;color:var(--text-3);">⧉</span></div>
+              <div class="popup-btns">
+                <div class="btn-ol">View Details</div>
+                <div class="btn-tl">Share Now</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="annotation"><p class="anno">Muncul pop-up <strong>"Referral Created Successfully!"</strong>. Salin tautan atau klik <strong>"Share Now"</strong> untuk langsung membagikan ke pasien.</p></div>
+      </div>
+
+      <!-- L11 -->
+      <div class="card">
+        <div class="card-header"><span class="card-badge">Langkah 11</span><span class="card-header-title">Bagikan referral</span></div>
+        <div class="phone">
+          <div class="topbar-white"><span class="tb-back">←</span><span class="tb-title">Routine Hypertension Package</span></div>
+          <div class="screen-dimmed">
+            <div class="screen-bg pb-w" style="padding-bottom:4px;">
+              <div class="med-row-p"><div class="med-name-p">Pamol 500 mg 10 Tablet</div><div class="med-meta-p">After meals / Morning, Afternoon, Evening</div></div>
+              <div class="med-row-p" style="border-bottom:none;"><div class="med-name-p">Longatin 50 mg 10 Kapsul</div><div class="med-meta-p">Before meals / Morning, Afternoon, Evening</div></div>
+            </div>
+            <div style="background:#fff;border-radius:10px 10px 0 0;border-top:1px solid var(--border);padding:9px 10px;">
+              <div style="display:flex;align-items:flex-start;gap:5px;background:#f3f4f6;border-radius:5px;padding:5px 7px;margin-bottom:8px;">
+                <div style="width:20px;height:20px;background:#e8f5e9;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;">AI</div>
+                <div style="font-size:7px;color:var(--text-3);line-height:1.4;">Follow the link to book a HPV Nonavalent Vaccination (Gardasil 9): https://www.ha...</div>
+              </div>
+              <div class="contacts-row">
+                <div class="contact"><div class="contact-av">T1<div class="wa-b">W</div></div><div class="contact-name">Teman 1</div></div>
+                <div class="contact"><div class="contact-av">T2<div class="wa-b">W</div></div><div class="contact-name">Teman 2</div></div>
+                <div class="contact"><div class="contact-av">T3<div class="wa-b">W</div></div><div class="contact-name">Teman 3</div></div>
+                <div class="contact"><div class="contact-av">T4<div class="wa-b">W</div></div><div class="contact-name">Teman 4</div></div>
+              </div>
+              <div class="app-icons-row">
+                <div class="app-icon"><div class="app-icon-circle" style="background:#f0f0f0;">📡</div><div class="app-icon-label">AirDrop</div></div>
+                <div class="app-icon"><div class="app-icon-circle" style="background:#d4f5d4;">💬</div><div class="app-icon-label">Messages</div></div>
+                <div class="app-icon"><div class="app-icon-circle" style="background:#ddeeff;">✉️</div><div class="app-icon-label">Mail</div></div>
+                <div class="app-icon"><div class="app-icon-circle" style="background:#fffacc;">📝</div><div class="app-icon-label">Notes</div></div>
+              </div>
+              <div class="share-row-item">Copy <span style="font-size:11px;">⧉</span></div>
+            </div>
+          </div>
+          <div class="no-share-note">✕ Referral <strong>tidak dapat</strong> dibagikan melalui chat telekonsultasi Halodoc.</div>
+        </div>
+        <div class="annotation">
+          <p class="anno">Bagikan ke berbagai platform:</p>
+          <ul class="bullet-list">
+            <li><strong>Bisa:</strong> WhatsApp, iMessage, Email, Instagram, TikTok, dan media sosial lainnya</li>
+            <li class="no"><strong>Tidak bisa:</strong> Chat telekonsultasi Halodoc</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- L12 -->
+      <div class="card">
+        <div class="card-header"><span class="card-badge">Langkah 12</span><span class="card-header-title">Halaman detail referral</span></div>
+        <div class="phone">
+          <div class="topbar-white"><span class="tb-back">←</span><span class="tb-title">Referral Details</span></div>
+          <div class="pb-w">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:5px;">
+              <div><div class="pkg-title-p">Routine Hypertension Package</div><div class="pkg-date">Created on Mar 28, 2026 19:30</div></div>
+              <div class="badge-a">Active</div>
+            </div>
+            <div class="det-card">
+              <div class="link-row-p"><span class="link-text-p">halo.doc/b/RXP924</span><span style="font-size:11px;color:var(--text-3);">⧉</span></div>
+              <div class="rs-row"><div><div class="rs-lbl">Total Clicks</div><div class="rs-val">0</div></div><div><div class="rs-lbl">Total Orders</div><div class="rs-val">0</div></div><div><div class="rs-lbl">Conversion</div><div class="rs-val">0</div></div></div>
+              <div class="earn-chip">💰 Your earnings : <strong>0</strong></div>
+            </div>
+            <div style="font-size:10px;font-weight:600;color:var(--text);margin:5px 0 4px;">Product Details</div>
+            <div class="med-row-p">
+              <div class="med-name-p">Pamol 500 mg 10 Tablet <span style="font-size:8px;font-weight:400;color:var(--text-3);">ⓘ • 2 Strip</span></div>
+              <div class="med-meta-p">3x/day · After meals / Morning, Afternoon, Evening</div>
+              <div class="earn-chip-sm">💰 Est. earnings : 3,600</div>
+            </div>
+            <div class="med-row-p" style="border-bottom:none;">
+              <div class="med-name-p">Longatin 50 mg 10 Kapsul <span style="font-size:8px;font-weight:400;color:var(--text-3);">ⓘ • 1 Strip</span></div>
+              <div class="med-meta-p">3x/day · Before meals / Morning, Afternoon, Evening</div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:6px;">
+              <div class="btn-dl">🗑 Delete</div>
+              <div class="btn-tl">↗ Share Now</div>
+            </div>
+          </div>
+        </div>
+        <div class="annotation"><p class="anno">Halaman <strong>Referral Details</strong> menampilkan tautan, statistik, dan daftar produk. Paket referral tetap dapat digunakan selama statusnya masih <strong>Active</strong>.</p></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="divider"></div>
+
+<!-- ════════════════════════════════════════════════
+     SECTION 2 — HOME EARN
+════════════════════════════════════════════════ -->
+<div id="section2">
+  <section class="section">
+    <div class="section-header">
+      <div class="section-label">Bagian 2</div>
+      <h2 class="section-title">Bagaimana melihat halaman Home Earn & list paket referral yang sudah dibuat?</h2>
+      <p class="section-desc">Pantau performa referral dan bagikan langsung dari halaman utama Earn.</p>
+    </div>
+    <div class="grid-3">
+
+      <!-- T1 -->
+      <div class="card">
+        <div class="card-header"><span class="card-badge">Tampilan 1</span><span class="card-header-title">Belum ada referral</span></div>
+        <div class="phone">
+          <div class="topbar-teal"><span class="tb-back-w">←</span><span class="tb-title-w">Earn (Affiliate & Referral)</span></div>
+          <div class="pb">
+            <div class="earn-banner"><div class="earn-lbl">Total earnings this month</div><div class="earn-val">0</div></div>
+            <div class="stat-row">
+              <div class="stat-box"><div class="s-lbl">Total Clicks</div><div class="s-num">0</div></div>
+              <div class="stat-box"><div class="s-lbl">Total Orders</div><div class="s-num">0</div></div>
+            </div>
+            <div class="stat-row">
+              <div class="stat-box"><div class="s-lbl">Conversion</div><div class="s-num">0</div></div>
+              <div class="stat-box"><div class="s-lbl">Total Earned</div><div class="s-num">0</div></div>
+            </div>
+            <div class="empty-state">
+              <div class="empty-title">No referral yet</div>
+              <div class="empty-desc">Start creating and sharing referral for medicines or homecare services. Once created, they will appear here so you can track their performance.</div>
+            </div>
+            <div class="btn-tl-full">+ Create Referral</div>
+          </div>
+        </div>
+        <div class="annotation"><p class="anno">Tampilan awal halaman <strong>Earn</strong> saat belum ada referral yang dibuat. Semua statistik menunjukkan angka <strong>0</strong>.</p></div>
+      </div>
+
+      <!-- T2 -->
+      <div class="card">
+        <div class="card-header"><span class="card-badge">Tampilan 2</span><span class="card-header-title">Statistik & list referral</span></div>
+        <div class="phone">
+          <div class="topbar-teal"><span class="tb-back-w">←</span><span class="tb-title-w">Earn (Affiliate & Referral)</span></div>
+          <div class="pb">
+            <div class="earn-banner"><div class="earn-lbl">Total earnings this month</div><div class="earn-val">28,800</div></div>
+            <div class="stat-row">
+              <div class="stat-box"><div class="s-lbl">Total Clicks</div><div class="s-num">166</div></div>
+              <div class="stat-box"><div class="s-lbl">Total Orders</div><div class="s-num">3</div></div>
+            </div>
+            <div class="stat-row">
+              <div class="stat-box"><div class="s-lbl">Conversion</div><div class="s-num">13,9%</div></div>
+              <div class="stat-box"><div class="s-lbl">Total Earned</div><div class="s-num">28,800</div></div>
+            </div>
+            <div class="sec-lbl">My Referral</div>
+            <div class="ref-card-p">
+              <div class="ref-row"><div class="ref-name-p">Routine Hypertension Package</div><div class="badge-a">Active</div></div>
+              <div class="ref-cat">Medicine</div>
+              <div class="ref-meds-p">Pamol 500 mg 10 Tablet + 1 more</div>
+              <div class="rs-row"><div><div class="rs-lbl">Total Clicks</div><div class="rs-val">166</div></div><div><div class="rs-lbl">Total Orders</div><div class="rs-val">3</div></div><div><div class="rs-lbl">Conversion</div><div class="rs-val">13,9%</div></div></div>
+              <div class="earn-chip">💰 Your earnings : <strong>28,800</strong></div>
+              <div class="cbtns"><div class="btn-ol">View Details</div><div class="btn-tl">↗ Share Now</div></div>
+            </div>
+            <div class="btn-tl-full">+ Create Referral</div>
+          </div>
+        </div>
+        <div class="annotation">
+          <p class="anno">Setelah referral diklik atau dipesan pasien, statistik akan terupdate. Daftar paket tampil di bagian <strong>My Referral</strong>.</p>
+          <ul class="bullet-list">
+            <li><strong>Total Clicks</strong> – jumlah klik tautan referral</li>
+            <li><strong>Total Orders</strong> – jumlah pesanan masuk</li>
+            <li><strong>Conversion</strong> – persentase klik yang jadi order</li>
+            <li><strong>Total Earned</strong> – total penghasilan bulan ini</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- T3 -->
+      <div class="card">
+        <div class="card-header"><span class="card-badge">Tampilan 3</span><span class="card-header-title">Share langsung dari home</span></div>
+        <div class="phone">
+          <div class="topbar-teal"><span class="tb-back-w">←</span><span class="tb-title-w">Earn (Affiliate & Referral)</span></div>
+          <div class="pb">
+            <div class="earn-banner"><div class="earn-lbl">Total earnings this month</div><div class="earn-val">28,800</div></div>
+            <div class="stat-row">
+              <div class="stat-box"><div class="s-lbl">Total Clicks</div><div class="s-num">166</div></div>
+              <div class="stat-box"><div class="s-lbl">Total Orders</div><div class="s-num">3</div></div>
+            </div>
+            <div class="stat-row">
+              <div class="stat-box"><div class="s-lbl">Conversion</div><div class="s-num">13,9%</div></div>
+              <div class="stat-box"><div class="s-lbl">Total Earned</div><div class="s-num">28,800</div></div>
+            </div>
+            <div class="sec-lbl">My Referral</div>
+            <div class="ref-card-p hl">
+              <div class="ref-row"><div class="ref-name-p">Routine Hypertension Package</div><div class="badge-a">Active</div></div>
+              <div class="ref-cat">Medicine</div>
+              <div class="ref-meds-p">Pamol 500 mg 10 Tablet + 1 more</div>
+              <div class="rs-row"><div><div class="rs-lbl">Total Clicks</div><div class="rs-val">166</div></div><div><div class="rs-lbl">Total Orders</div><div class="rs-val">3</div></div><div><div class="rs-lbl">Conversion</div><div class="rs-val">13,9%</div></div></div>
+              <div class="earn-chip">💰 Your earnings : <strong>28,800</strong></div>
+              <div class="cbtns"><div class="btn-ol">View Details</div><div class="btn-tl glow">↗ Share Now</div></div>
+            </div>
+            <div class="btn-tl-full">+ Create Referral</div>
+          </div>
+        </div>
+        <div class="annotation">
+          <p class="anno">Dokter dapat langsung membagikan paket referral dari halaman ini — cukup klik tombol <strong>"Share Now"</strong> pada kartu referral.</p>
+          <div class="callout">💡 Tombol <strong>View Details</strong> membuka halaman detail untuk melihat tautan dan statistik lengkap.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="divider"></div>
+
+<!-- ════════════════════════════════════════════════
+     SECTION 3 — NONAKTIF & REAKTIVASI
+════════════════════════════════════════════════ -->
+<div id="section3">
+  <section class="section">
+    <div class="section-header">
+      <div class="section-label">Bagian 3</div>
+      <h2 class="section-title">Bagaimana cara menonaktifkan & mengaktifkan kembali paket referral?</h2>
+      <p class="section-desc">Kelola status aktif referral langsung dari halaman Home Earn atau My Referral.</p>
+    </div>
+
+    <!-- Row 1: 3 cards -->
+    <div class="grid-3" style="margin-bottom:22px;">
+
+      <!-- L1 -->
+      <div class="card">
+        <div class="card-header"><span class="card-badge">Langkah 1</span><span class="card-header-title">Klik "View Details" di Home</span></div>
+        <div class="phone">
+          <div class="topbar-teal"><span class="tb-back-w">←</span><span class="tb-title-w">Earn (Affiliate & Referral)</span></div>
+          <div class="pb">
+            <div class="earn-banner"><div class="earn-lbl">Total earnings this month</div><div class="earn-val">28,800</div></div>
+            <div class="stat-row">
+              <div class="stat-box"><div class="s-lbl">Total Clicks</div><div class="s-num">166</div></div>
+              <div class="stat-box"><div class="s-lbl">Total Orders</div><div class="s-num">3</div></div>
+            </div>
+            <div class="stat-row">
+              <div class="stat-box"><div class="s-lbl">Conversion</div><div class="s-num">13,9%</div></div>
+              <div class="stat-box"><div class="s-lbl">Total Earned</div><div class="s-num">28,800</div></div>
+            </div>
+            <div class="sec-lbl">My Referral</div>
+            <div class="ref-card-p hl">
+              <div class="ref-row"><div class="ref-name-p">Routine Hypertension Package</div><div class="badge-a">Active</div></div>
+              <div class="ref-cat">Medicine</div>
+              <div class="ref-meds-p">Pamol 500 mg 10 Tablet + 1 more</div>
+              <div class="rs-row"><div><div class="rs-lbl">Total Clicks</div><div class="rs-val">166</div></div><div><div class="rs-lbl">Total Orders</div><div class="rs-val">3</div></div><div><div class="rs-lbl">Conversion</div><div class="rs-val">13,9%</div></div></div>
+              <div class="earn-chip">💰 Your earnings : <strong>28,800</strong></div>
+              <div class="cbtns"><div class="btn-ol glow">View Details</div><div class="btn-tl">↗ Share Now</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="annotation"><p class="anno">Dari halaman Home Earn, klik <strong>"View Details"</strong> pada paket referral yang ingin dinonaktifkan.</p></div>
+      </div>
+
+      <!-- L2 -->
+      <div class="card">
+        <div class="card-header"><span class="card-badge">Langkah 2</span><span class="card-header-title">Klik "Delete" di halaman detail</span></div>
+        <div class="phone">
+          <div class="topbar-white"><span class="tb-back">←</span><span class="tb-title">Referral Details</span></div>
+          <div class="pb-w">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:5px;">
+              <div><div class="pkg-title-p">Routine Hypertension Package</div><div class="pkg-date">Created on Mar 28, 2026 19:30</div></div>
+              <div class="badge-a">Active</div>
+            </div>
+            <div class="det-card">
+              <div class="link-row-p"><span class="link-text-p">halo.doc/b/RXP924</span><span style="font-size:11px;color:var(--text-3);">⧉</span></div>
+              <div class="rs-row"><div><div class="rs-lbl">Total Clicks</div><div class="rs-val">0</div></div><div><div class="rs-lbl">Total Orders</div><div class="rs-val">0</div></div><div><div class="rs-lbl">Conversion</div><div class="rs-val">0</div></div></div>
+              <div class="earn-chip">💰 Your earnings : <strong>0</strong></div>
+            </div>
+            <div style="font-size:10px;font-weight:600;color:var(--text);margin:5px 0 4px;">Product Details</div>
+            <div class="med-row-p"><div class="med-name-p">Pamol 500 mg 10 Tablet <span style="font-size:8px;font-weight:400;color:var(--text-3);">ⓘ • 2 Strip</span></div><div class="med-meta-p">3x/day · After meals</div><div class="earn-chip-sm">💰 Est. earnings : 3,600</div></div>
+            <div class="med-row-p" style="border-bottom:none;"><div class="med-name-p">Longatin 50 mg 10 Kapsul <span style="font-size:8px;font-weight:400;color:var(--text-3);">ⓘ • 1 Strip</span></div><div class="med-meta-p">3x/day · Before meals</div></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:7px;">
+              <div class="btn-dl glow">🗑 Delete</div>
+              <div class="btn-tl">↗ Share Now</div>
+            </div>
+          </div>
+        </div>
+        <div class="annotation"><p class="anno">Di halaman Referral Details, klik tombol <strong>"Delete"</strong> di bagian bawah untuk menonaktifkan paket referral.</p></div>
+      </div>
+
+      <!-- L3 -->
+      <div class="card">
+        <div class="card-header"><span class="card-badge">Langkah 3</span><span class="card-header-title">Lihat tab "Deleted"</span></div>
+        <div class="phone">
+          <div class="topbar-teal"><span class="tb-back-w">←</span><span class="tb-title-w">My Referral</span></div>
+          <div style="background:#fff;padding:0;">
+            <div class="tab-row"><div class="tab">Active</div><div class="tab on">Deleted</div></div>
+            <div style="padding:7px 9px;">
+              <div class="search-bar-p"><span class="sb-txt">Search name...</span><span style="font-size:10px;color:var(--text-3);">🔍</span></div>
+              <div class="ref-card-p hl">
+                <div class="ref-row"><div class="ref-name-p">Routine Hypertension Package</div><div class="badge-d">Deleted</div></div>
+                <div class="ref-cat">Medicine</div>
+                <div class="ref-meds-p">Pamol 500 mg 10 Tablet + 1 more</div>
+                <div class="rs-row"><div><div class="rs-lbl">Total Clicks</div><div class="rs-val">166</div></div><div><div class="rs-lbl">Total Orders</div><div class="rs-val">3</div></div><div><div class="rs-lbl">Conversion</div><div class="rs-val">13,9%</div></div></div>
+                <div class="earn-chip">💰 Your earnings : <strong>28,800</strong></div>
+                <div class="cbtns"><div class="btn-ol glow">View Details</div><div class="btn-tl">↗ Share Now</div></div>
+              </div>
+              <div style="opacity:0.4;" class="ref-card-p">
+                <div class="ref-row"><div class="ref-name-p">Migraine Package</div><div class="badge-d">Deleted</div></div>
+                <div class="ref-cat">Medicine</div>
+                <div class="ref-meds-p">Pamol 500 mg 10 Tablet + 1 more</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="annotation"><p class="anno">Paket yang dihapus tersimpan di tab <strong>"Deleted"</strong>. Klik <strong>"View Details"</strong> untuk mengaktifkan kembali.</p></div>
+      </div>
+    </div>
+
+    <!-- Row 2: 2 cards -->
+    <div class="grid-2">
+
+      <!-- L4 -->
+      <div class="card">
+        <div class="card-header"><span class="card-badge">Langkah 4</span><span class="card-header-title">Klik "Reactivate"</span></div>
+        <div class="phone">
+          <div class="topbar-white"><span class="tb-back">←</span><span class="tb-title">Referral Details</span></div>
+          <div class="pb-w">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:5px;">
+              <div><div class="pkg-title-p">Routine Hypertension Package</div><div class="pkg-date">Created on Mar 28, 2026 19:30</div></div>
+              <div class="badge-d">Deleted</div>
+            </div>
+            <div class="det-card del">
+              <div class="link-row-p"><span class="link-text-p">halo.doc/b/RXP924</span><span style="font-size:11px;color:var(--text-3);">⧉</span></div>
+              <div class="rs-row"><div><div class="rs-lbl">Total Clicks</div><div class="rs-val">166</div></div><div><div class="rs-lbl">Total Orders</div><div class="rs-val">3</div></div><div><div class="rs-lbl">Conversion</div><div class="rs-val">13,9%</div></div></div>
+              <div class="earn-chip">💰 Your earnings : <strong>28,800</strong></div>
+            </div>
+            <div style="font-size:10px;font-weight:600;color:var(--text);margin:5px 0 4px;">Product Details</div>
+            <div class="med-row-p"><div class="med-name-p">Pamol 500 mg 10 Tablet <span style="font-size:8px;font-weight:400;color:var(--text-3);">ⓘ • 2 Strip</span></div><div class="med-meta-p">3x/day · After meals</div><div class="earn-chip-sm">💰 Est. earnings : 3,600</div></div>
+            <div class="med-row-p" style="border-bottom:none;"><div class="med-name-p">Longatin 50 mg 10 Kapsul <span style="font-size:8px;font-weight:400;color:var(--text-3);">ⓘ • 1 Strip</span></div><div class="med-meta-p">3x/day · Before meals</div></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:7px;">
+              <div class="btn-no">🗑 Delete</div>
+              <div class="btn-react glow">↺ Reactivate</div>
+            </div>
+          </div>
+        </div>
+        <div class="annotation"><p class="anno">Di halaman detail paket yang sudah dihapus, klik tombol <strong>"Reactivate"</strong> untuk mengaktifkan kembali paket referral.</p></div>
+      </div>
+
+      <!-- L5 -->
+      <div class="card">
+        <div class="card-header"><span class="card-badge">Langkah 5</span><span class="card-header-title">Periksa & klik "Save"</span></div>
+        <div class="phone">
+          <div class="topbar-white"><span class="tb-back">←</span><div style="flex:1;"><div class="tb-title">Routine Hypertension Package</div><div style="font-size:8px;color:var(--text-3);">2 items</div></div></div>
+          <div class="pb-w">
+            <div class="warn-box"><span class="wi">⚠</span><span class="wt">Please verify each medicine and dosage to ensure accuracy before generating your affiliate link.</span></div>
+            <div class="med-row-p">
+              <div style="display:flex;justify-content:space-between;">
+                <div><div class="med-name-p">Pamol 500 mg 10 Tablet <span style="font-size:8px;font-weight:400;color:var(--text-3);">ⓘ • 2 Strip</span></div><div class="med-meta-p">3x/day · After meals</div><div class="earn-chip-sm">💰 Est. earnings : 3,600</div></div>
+                <div class="med-icons">✏️ 🗑</div>
+              </div>
+            </div>
+            <div class="med-row-p" style="border-bottom:none;">
+              <div style="display:flex;justify-content:space-between;">
+                <div><div class="med-name-p">Longatin 50 mg 10 Kapsul <span style="font-size:8px;font-weight:400;color:var(--text-3);">ⓘ • 1 Strip</span></div><div class="med-meta-p">3x/day · Before meals</div></div>
+                <div class="med-icons">✏️ 🗑</div>
+              </div>
+            </div>
+            <div class="add-med">＋ Add Medicine</div>
+            <div class="earn-footer">💰 Estimated earnings per order: <strong>3,600</strong></div>
+            <div class="btn-tl-full glow">Save</div>
+          </div>
+        </div>
+        <div class="annotation"><p class="anno">Anda diarahkan ke halaman paket referral. Periksa kembali daftar obat, lalu klik <strong>"Save"</strong> untuk mengaktifkan kembali paket.</p></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <strong>Halodoc Doctors</strong> · Panduan Fitur Earn (Affiliate & Referral)<br>
+  <span style="font-size:12px;margin-top:6px;display:block;">Dokumen ini dibuat untuk keperluan internal pelatihan dokter mitra Halodoc.</span>
+</footer>
+
+<script>
+  // Active nav on scroll
+  const sections = ['section1','section2','section3'];
+  const navItems = document.querySelectorAll('.nav-item');
+  function updateNav() {
+    let current = 'section1';
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top <= 80) current = id;
+    });
+    navItems.forEach(item => {
+      item.classList.toggle('active', item.getAttribute('href') === '#' + current);
+    });
+  }
+  window.addEventListener('scroll', updateNav);
+</script>
+
+</body>
+</html>
